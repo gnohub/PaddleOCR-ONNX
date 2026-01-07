@@ -1,0 +1,17 @@
+Filename,Infer-Backend,Intra-Thread,Inter-Thread,AvgPre(ms),AvgInfer(ms),AvgPost(ms),AvgTotal(ms),P90Total(ms),P99total(ms)
+data/images/reg.png ,ORT-CPU     ,1       ,1       ,0.170266    ,39.0889     ,1.35165     ,40.6108     ,40.7896     ,41.099      
+data/images/reg.png ,ORT-CPU     ,1       ,2       ,0.17276     ,38.8443     ,1.35716     ,40.3742     ,40.5657     ,40.9253     
+data/images/reg.png ,ORT-CPU     ,1       ,4       ,0.171916    ,38.969      ,1.35585     ,40.4968     ,40.6863     ,41.0815     
+data/images/reg.png ,ORT-CPU     ,1       ,8       ,0.172519    ,38.8195     ,1.35518     ,40.3472     ,40.5143     ,41.5407     
+data/images/reg.png ,ORT-CPU     ,2       ,1       ,0.175168    ,22.7353     ,1.38426     ,24.2947     ,24.9871     ,25.0901     
+data/images/reg.png ,ORT-CPU     ,2       ,2       ,0.176113    ,22.0077     ,1.38754     ,23.5714     ,23.6843     ,23.9689     
+data/images/reg.png ,ORT-CPU     ,2       ,4       ,0.175142    ,22.0853     ,1.38332     ,23.6438     ,23.751      ,24.6792     
+data/images/reg.png ,ORT-CPU     ,2       ,8       ,0.175216    ,22.311      ,1.38466     ,23.8709     ,24.6229     ,26.33       
+data/images/reg.png ,ORT-CPU     ,4       ,1       ,0.181706    ,13.3379     ,1.42134     ,14.941      ,15.0132     ,15.3393     
+data/images/reg.png ,ORT-CPU     ,4       ,2       ,0.178518    ,13.1536     ,1.41155     ,14.7436     ,15.1114     ,15.2054     
+data/images/reg.png ,ORT-CPU     ,4       ,4       ,0.179473    ,13.9051     ,1.41941     ,15.504      ,15.5678     ,15.7485     
+data/images/reg.png ,ORT-CPU     ,4       ,8       ,0.179692    ,13.5612     ,1.42069     ,15.1616     ,15.4935     ,15.5789     
+data/images/reg.png ,ORT-CPU     ,8       ,1       ,0.203378    ,13.4586     ,1.44605     ,15.108      ,15.1386     ,15.1523     
+data/images/reg.png ,ORT-CPU     ,8       ,2       ,0.202801    ,13.6491     ,1.44739     ,15.2993     ,15.4013     ,15.4553     
+data/images/reg.png ,ORT-CPU     ,8       ,4       ,0.203267    ,13.0814     ,1.4484      ,14.7331     ,14.776      ,14.7941     
+data/images/reg.png ,ORT-CPU     ,8       ,8       ,0.203618    ,12.9743     ,1.44986     ,14.6277     ,14.6568     ,14.6739     

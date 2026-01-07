@@ -1,0 +1,17 @@
+Filename,Infer-Backend,Intra-Thread,Inter-Thread,AvgPre(ms),AvgInfer(ms),AvgPost(ms),AvgTotal(ms),P90Total(ms),P99total(ms)
+data/images/general_ocr_0.png,ORT-CPU     ,1       ,1       ,9.49445     ,1360.55     ,23.1701     ,1393.21     ,1393.98     ,1451.61     
+data/images/general_ocr_0.png,ORT-CPU     ,1       ,2       ,9.45631     ,1365.09     ,23.2476     ,1397.8      ,1398.96     ,1401.36     
+data/images/general_ocr_0.png,ORT-CPU     ,1       ,4       ,9.50933     ,1360.2      ,23.1587     ,1392.87     ,1393.95     ,1396.6      
+data/images/general_ocr_0.png,ORT-CPU     ,1       ,8       ,9.44436     ,1357.4      ,23.1908     ,1390.03     ,1391.78     ,1394.71     
+data/images/general_ocr_0.png,ORT-CPU     ,2       ,1       ,9.7245      ,927.254     ,23.86       ,960.838     ,967.383     ,970.679     
+data/images/general_ocr_0.png,ORT-CPU     ,2       ,2       ,9.74661     ,927.801     ,24.003      ,961.551     ,969.017     ,973.827     
+data/images/general_ocr_0.png,ORT-CPU     ,2       ,4       ,9.71261     ,929.121     ,23.8424     ,962.676     ,969.444     ,976.45      
+data/images/general_ocr_0.png,ORT-CPU     ,2       ,8       ,9.70397     ,922.049     ,23.8364     ,955.589     ,960.297     ,966.632     
+data/images/general_ocr_0.png,ORT-CPU     ,4       ,1       ,10.0345     ,715.576     ,24.5547     ,750.165     ,765.189     ,770.194     
+data/images/general_ocr_0.png,ORT-CPU     ,4       ,2       ,9.99964     ,709.22      ,24.3474     ,743.567     ,759.524     ,767.161     
+data/images/general_ocr_0.png,ORT-CPU     ,4       ,4       ,10.0573     ,721.466     ,24.4645     ,755.988     ,772.069     ,781.834     
+data/images/general_ocr_0.png,ORT-CPU     ,4       ,8       ,10.0257     ,718.992     ,24.4729     ,753.491     ,768.357     ,774.231     
+data/images/general_ocr_0.png,ORT-CPU     ,8       ,1       ,12.4546     ,771.222     ,25.4213     ,809.098     ,825.502     ,836.914     
+data/images/general_ocr_0.png,ORT-CPU     ,8       ,2       ,12.928      ,766.299     ,25.6527     ,804.88      ,822.293     ,835.481     
+data/images/general_ocr_0.png,ORT-CPU     ,8       ,4       ,12.7944     ,761.283     ,25.3865     ,799.464     ,816.482     ,831.361     
+data/images/general_ocr_0.png,ORT-CPU     ,8       ,8       ,12.4581     ,768.385     ,25.568      ,806.411     ,822.697     ,835.406     

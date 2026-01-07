@@ -1,0 +1,17 @@
+Filename,Infer-Backend,Intra-Thread,Inter-Thread,AvgPre(ms),AvgInfer(ms),AvgPost(ms),AvgTotal(ms),P90Total(ms),P99total(ms)
+data/images/angle.png,ORT-CPU     ,1       ,1       ,0.0467249   ,7.49211     ,0.0012396   ,7.54008     ,7.58062     ,7.7317      
+data/images/angle.png,ORT-CPU     ,1       ,2       ,0.0475128   ,7.55822     ,0.00131475  ,7.60705     ,7.65407     ,7.7424      
+data/images/angle.png,ORT-CPU     ,1       ,4       ,0.0466299   ,7.49449     ,0.00124706  ,7.54237     ,7.5882      ,7.6469      
+data/images/angle.png,ORT-CPU     ,1       ,8       ,0.0471241   ,7.48986     ,0.00128416  ,7.53827     ,7.60085     ,7.8884      
+data/images/angle.png,ORT-CPU     ,2       ,1       ,0.0488968   ,4.65806     ,0.00133835  ,4.7083      ,4.74728     ,4.80433     
+data/images/angle.png,ORT-CPU     ,2       ,2       ,0.0493073   ,4.58281     ,0.00132655  ,4.63345     ,4.74533     ,4.7911      
+data/images/angle.png,ORT-CPU     ,2       ,4       ,0.0491148   ,4.76286     ,0.00136444  ,4.81334     ,4.85526     ,4.96847     
+data/images/angle.png,ORT-CPU     ,2       ,8       ,0.0498841   ,4.68539     ,0.00131025  ,4.73659     ,4.77401     ,4.88159     
+data/images/angle.png,ORT-CPU     ,4       ,1       ,0.0510035   ,3.16536     ,0.00135636  ,3.21772     ,3.25979     ,3.32006     
+data/images/angle.png,ORT-CPU     ,4       ,2       ,0.0507855   ,3.01561     ,0.00136028  ,3.06775     ,3.11732     ,3.20061     
+data/images/angle.png,ORT-CPU     ,4       ,4       ,0.0515592   ,3.04759     ,0.00140465  ,3.10055     ,3.1815      ,3.21338     
+data/images/angle.png,ORT-CPU     ,4       ,8       ,0.05137     ,3.09085     ,0.00150064  ,3.14372     ,3.16871     ,3.23737     
+data/images/angle.png,ORT-CPU     ,8       ,1       ,0.0685244   ,3.42201     ,0.00152771  ,3.49206     ,3.53735     ,3.54478     
+data/images/angle.png,ORT-CPU     ,8       ,2       ,0.0689288   ,3.47257     ,0.00168656  ,3.54319     ,3.57702     ,3.59083     
+data/images/angle.png,ORT-CPU     ,8       ,4       ,0.0684116   ,3.41775     ,0.00152403  ,3.48769     ,3.51754     ,3.52472     
+data/images/angle.png,ORT-CPU     ,8       ,8       ,0.0685648   ,3.39422     ,0.00154955  ,3.46433     ,3.53383     ,3.54276     
