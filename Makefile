@@ -4,16 +4,16 @@ include $(CONFIG)
 # =========================
 # Device Config
 # =========================
-ifeq ($(DEVICE),CPU)
-	DEVICE_ID := 0
+ifeq ($(INFTER_BACKEND), ORT_CPU)
+	INFTER_BACKEND_ID := 0
 endif
 
-ifeq ($(DEVICE),CUDA)
-	DEVICE_ID := 1
+ifeq ($(INFTER_BACKEND),ORT_CUDA)
+	INFTER_BACKEND_ID := 1
 endif
 
-ifeq ($(DEVICE),TRT)
-	DEVICE_ID := 2
+ifeq ($(INFTER_BACKEND),TRT)
+	INFTER_BACKEND_ID := 2
 endif
 
 # =========================
@@ -45,7 +45,7 @@ BENCH_APP       := benchmark
 # Compiler
 # =========================
 CUCC      := $(CUDA_DIR)/bin/nvcc
-CXXFLAGS  := -std=c++14 -pthread -fPIC -DDEVICE_ID=$(DEVICE_ID)
+CXXFLAGS  := -std=c++14 -pthread -fPIC -DINFTER_BACKEND_ID=$(INFTER_BACKEND_ID)
 CUDAFLAGS := -Xcompiler -fPIC
 
 # =========================
@@ -60,13 +60,13 @@ LIBS := -lstdc++fs \
         -L "$(ONNXRUNTIME_DIR)/lib" -lonnxruntime \
         `pkg-config --libs opencv4`
 
-ifeq ($(DEVICE),TRT)
+ifeq ($(INFTER_BACKEND),TRT)
 	INCS += -I $(CUDA_DIR)/include \
 	        -I $(TENSORRT_DIR)/include
 	LIBS += -L "$(CUDA_DIR)/lib64" -lcudart -lcublas -lcudnn
 endif
 
-ifeq ($(DEVICE),CUDA)
+ifeq ($(INFTER_BACKEND),ORT_CUDA)
 	INCS += -I $(CUDA_DIR)/include
 	LIBS += -L "$(TENSORRT_DIR)/lib" -lnvinfer -lnvonnxparser \
 	        -L "$(CUDA_DIR)/lib64" -lcudart -lcublas -lcudnn
