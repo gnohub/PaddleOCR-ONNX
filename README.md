@@ -80,8 +80,3 @@ make
 		- Intra-Thread / Inter-Thread：算子内部/间并发线程数
 		- AvgPre / AvgInfer / AvgPost / AvgTotal：平均前处理 / 推理 / 后处理 / 总耗时 (ms)
 		- P90Total / P99Total：总耗时 P90 / P99
-
-## 其他说明
-
-- 当前版本未启用 oneDNN，加上后推理速度会更快。
-- 当前版本不支持 GPU 推理。
