@@ -154,15 +154,27 @@ bool Anglecls::preProcessCpu(InferContext& ctx) {
     }
 
     ctx.inputShape = {batch, m_channels, m_dstHeight, m_dstWidth};
-    ctx.inputTensor = Ort::Value::CreateTensor<float>(m_onnxMemInfo, 
-        ctx.inputValues.data(), 
-        ctx.inputValues.size(), 
-        ctx.inputShape.data(), 
-        ctx.inputShape.size());
+
+    switch(m_params->inferBackend){
+        case common::infer_backend::ORT_CUDA:
+        case common::infer_backend::ORT_CPU:{
+            auto mem_info = Ort::MemoryInfo::CreateCpu(OrtDeviceAllocator, OrtMemTypeDefault);
+            ctx.inputTensor = Ort::Value::CreateTensor<float>(mem_info, 
+                ctx.inputValues.data(), 
+                ctx.inputValues.size(), 
+                ctx.inputShape.data(), 
+                ctx.inputShape.size());
+            break;
+        }
+    }
 
     m_timer->stopCpu();
     ctx.preTime = m_timer->durationCpu<timer::Timer::ms>("Anglecls preprocess(CPU)");
     return true;
+}
+
+bool Anglecls::preProcessCuda(InferContext& ctx){
+    return preProcessCpu(ctx);
 }
 
 bool Anglecls::postProcessCpu(InferContext& ctx) {
@@ -195,6 +207,10 @@ bool Anglecls::postProcessCpu(InferContext& ctx) {
     m_timer->stopCpu();
     ctx.postTime = m_timer->durationCpu<timer::Timer::ms>("Anglecls postprocess(CPU)");
     return true;
+}
+
+bool Anglecls::postProcessCuda(InferContext& ctx){
+    return postProcessCpu(ctx);
 }
 
 shared_ptr<Anglecls> makeAnglecls(ModelParams &params, logger::Level level)

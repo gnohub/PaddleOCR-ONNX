@@ -19,15 +19,19 @@ Model::Model(ModelParams &params, logger::Level level):m_inputName(nullptr, &fre
 void Model::loadData(){}
 
 void Model::initModel() {
-    if (m_params->inferBackend == common::infer_backend::ORT_CPU && m_onnxSession == nullptr) {
+    if ( (m_params->inferBackend == common::infer_backend::ORT_CPU || m_params->inferBackend == common::infer_backend::ORT_CUDA)
+     && m_onnxSession == nullptr) {
         // init onnx runtime
         m_onnxOptions.SetInterOpNumThreads(m_params->interThreadnum);
         m_onnxOptions.SetIntraOpNumThreads(m_params->intraThreadnum);
         m_onnxOptions.SetGraphOptimizationLevel(GraphOptimizationLevel::ORT_ENABLE_ALL);
-        // TODO oneDNN
 
         m_onnxSession = std::make_shared<Ort::Session>(m_onnxEnv, m_params->onnxPath.c_str(), m_onnxOptions);
 
+#if INFTER_BACKEND_ID == INFER_ORT_CUDA
+        if(m_params->inferBackend == common::infer_backend::ORT_CUDA)
+            Ort::ThrowOnError(OrtSessionOptionsAppendExecutionProvider_CUDA(m_onnxOptions, 0));
+#endif
         Ort::AllocatorWithDefaultOptions allocator;
 
         Ort::AllocatedStringPtr         inputptr    = m_onnxSession->GetInputNameAllocated(0, allocator);
@@ -71,12 +75,16 @@ void Model::inference(InferContext& ctx, std::string imagePath) {
     assert(fileExists(imagePath));
     if (m_params->inferBackend == common::infer_backend::ORT_CPU) {
         preProcessCpu(ctx);
+    }else if(m_params->inferBackend == common::infer_backend::ORT_CUDA){
+        preProcessCuda(ctx);
     }
 
     enqueueBindings(ctx);
 
     if (m_params->inferBackend == common::infer_backend::ORT_CPU) {
         postProcessCpu(ctx);
+    }else if(m_params->inferBackend == common::infer_backend::ORT_CUDA){
+        postProcessCuda(ctx);
     }
 }
 

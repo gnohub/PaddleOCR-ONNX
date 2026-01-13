@@ -23,6 +23,8 @@ public:
     virtual void setup(void const* data, std::size_t size) override;
     virtual bool preProcessCpu(InferContext& ctx) override;
     virtual bool postProcessCpu(InferContext& ctx) override;
+    virtual bool preProcessCuda(InferContext& ctx) override;
+    virtual bool postProcessCuda(InferContext& ctx) override;
 
 private:
     std::pair<std::vector<cv::Point2f>, float> getMiniBoxes(const std::vector<cv::Point2f> &contour);

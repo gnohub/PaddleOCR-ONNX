@@ -2,7 +2,7 @@
 # PaddleOCR ONNX C++推理
 
 ## 简介
-PaddleOCR 的 OnnxRuntime 推理版本，目前只支持 **CPU 推理**。  
+PaddleOCR 的 OnnxRuntime 推理版本，支持 **CPU/GPU 推理**。  
 模型是直接使用 PaddleOCR 提供的教程导出的，参考链接: [获取 ONNX 模型](https://www.paddleocr.ai/latest/version3.x/deployment/obtaining_onnx_models.html)
 
 ## 模型版本
@@ -18,7 +18,7 @@ PaddleOCR 的 OnnxRuntime 推理版本，目前只支持 **CPU 推理**。
 2. **C++ 标准**：C++14  
 3. **OpenCV 版本**：4.6.0  
    - 参考：[OpenCV GitHub](https://github.com/opencv/opencv.git)  
-4. **OnnxRuntime 版本**：1.18.0  
+4. **OnnxRuntime 版本**：1.18.1  
    - 参考：[OnnxRuntime GitHub](https://github.com/microsoft/onnxruntime)
 
 ## 编译步骤
@@ -47,7 +47,7 @@ make
 7. `--angle_yaml`：文本方向分类模型配置文件路径，默认 `models/PP-LCNet_x1_0_textline_ori_infer/inference.yml`。  
 8. `--rec_model`：文本识别模型文件路径，默认 `models/PP-OCRv5_mobile_rec_infer/inference.onnx`。  
 9. `--rec_yaml`：文本识别模型配置文件路径，默认 `models/PP-OCRv5_mobile_rec_infer/inference.yml`。  
-10. `--infer_backend`：推理后端类型，当前版本只支持 ORT-CPU 推理，默认 `ORTCPU`。  
+10. `--infer_backend`：推理后端类型，当前版本支持 ORT-CPU/ORT-CUDA 推理，默认 `ORTCPU`。  
 11. `--save_image`：是否保存推理过程中产生的临时图片，默认开启。  
 12. `--image`：目标图片文件路径。  
 13. `--intra_threads`：ORT 算子内部并发线程数，默认为 1。  

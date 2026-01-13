@@ -21,6 +21,8 @@ public:
     virtual void setup(void const* data, std::size_t size) override;
     virtual bool preProcessCpu(InferContext& ctx) override;
     virtual bool postProcessCpu(InferContext& ctx) override;
+    virtual bool preProcessCuda(InferContext& ctx) override;
+    virtual bool postProcessCuda(InferContext& ctx) override;
 private:
     int                                     m_channels  = 3;
     int                                     m_dstHeight = 80;

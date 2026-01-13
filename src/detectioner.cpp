@@ -148,16 +148,28 @@ bool Detectioner::preProcessCpu(InferContext& ctx) {
     // Normalize and to tensor(bchw)
     ctx.inputValues = toCHWFloat(dst_img, m_meanValues, m_normValues);
     ctx.inputShape = {1, dst_img.channels(), dst_img.rows, dst_img.cols};
-    ctx.inputTensor = Ort::Value::CreateTensor<float>(m_onnxMemInfo, 
-        ctx.inputValues.data(), 
-        ctx.inputValues.size(), 
-        ctx.inputShape.data(), 
-        ctx.inputShape.size());
+
+    switch(m_params->inferBackend){
+        case common::infer_backend::ORT_CUDA:
+        case common::infer_backend::ORT_CPU:{
+            auto mem_info = Ort::MemoryInfo::CreateCpu(OrtDeviceAllocator, OrtMemTypeDefault);
+            ctx.inputTensor = Ort::Value::CreateTensor<float>(mem_info, 
+                ctx.inputValues.data(), 
+                ctx.inputValues.size(), 
+                ctx.inputShape.data(), 
+                ctx.inputShape.size());
+            break;
+        }
+    }
 
     m_timer->stopCpu();
     ctx.preTime = m_timer->durationCpu<timer::Timer::ms>("Detectioner preprocess(CPU)");
 
     return true;
+}
+
+bool Detectioner::preProcessCuda(InferContext& ctx){
+    return preProcessCpu(ctx);
 }
 
 std::pair<std::vector<cv::Point2f>, float>
@@ -418,6 +430,10 @@ bool Detectioner::postProcessCpu(InferContext& ctx) {
         cv::imwrite("output/dec_dst.png", drawBoxes(ctx.srcMat, ctx.boxes));
     }
     return !ctx.boxes.empty();
+}
+
+bool Detectioner::postProcessCuda(InferContext& ctx){
+    return postProcessCpu(ctx);
 }
 
 shared_ptr<Detectioner> makeDetectioner(model::ModelParams &params, logger::Level level, float minSide)

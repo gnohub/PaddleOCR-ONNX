@@ -86,14 +86,15 @@ public:
 
 public:
     bool enqueueBindings(InferContext& ctx);
-    virtual void setup(void const* data, std::size_t size)  = 0;
-    virtual bool preProcessCpu(InferContext& ctx)           = 0;
-    virtual bool postProcessCpu(InferContext& ctx)          = 0;
+    virtual void setup(void const* data, std::size_t size)      = 0;
+    virtual bool preProcessCpu(InferContext& ctx)               = 0;
+    virtual bool postProcessCpu(InferContext& ctx)              = 0;
+    virtual bool preProcessCuda(InferContext& ctx)              = 0;
+    virtual bool postProcessCuda(InferContext& ctx)             = 0;
 
 public:
     ModelParams*                                m_params = nullptr;
     Ort::Env&                                   m_onnxEnv = OrtEnvSingleton::ort_env();
-    Ort::MemoryInfo                             m_onnxMemInfo = Ort::MemoryInfo::CreateCpu(OrtDeviceAllocator, OrtMemTypeCPU);
     std::shared_ptr<Ort::Session>               m_onnxSession;
     Ort::SessionOptions                         m_onnxOptions;
     std::unique_ptr<char[], decltype(&free)>    m_inputName;
